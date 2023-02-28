@@ -2,6 +2,10 @@
     "name": "msal-community-solid",
     "version": "0.1.0",
     "description": "A Solid.js SPA library for the Microsoft Identity Platform implemented as a wrapper around @azure/msal-browser.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/saraelsa/msal-community-solid.git"
+    },
     "type": "module",
     "main": "dist/src/index.js",
     "scripts": {
