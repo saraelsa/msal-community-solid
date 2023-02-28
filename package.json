@@ -6,6 +6,7 @@
     "main": "dist/src/index.js",
     "scripts": {
         "build": "tsc",
+        "publish": "tsc",
         "test": "vitest"
     },
     "license": "MIT",
