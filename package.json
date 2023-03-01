@@ -17,7 +17,7 @@
     "files": [
         "dist"
     ],
-    "private": "false",
+    "private": false,
     "type": "module",
     "main": "dist/index.cjs",
     "module": "dist/index.js",
