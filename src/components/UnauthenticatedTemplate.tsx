@@ -15,9 +15,5 @@ export type UnauthenticatedTemplateProps = AccountIdentifiers & {
 export const UnauthenticatedTemplate: Component<UnauthenticatedTemplateProps> = (props) => {
     const [isAuthenticated] = useIsAuthenticated(props);
 
-    return (
-        <Show when={isAuthenticated() === false}>
-            {props.children}
-        </Show>
-    );
+    return <Show when={isAuthenticated() === false}>{props.children}</Show>;
 };
