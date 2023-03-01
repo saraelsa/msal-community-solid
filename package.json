@@ -2,15 +2,27 @@
     "name": "msal-community-solid",
     "version": "0.1.2",
     "description": "A Solid.js SPA library for the Microsoft Identity Platform implemented as a wrapper around @azure/msal-browser.",
+    "author": {
+        "name": "Sara Elsayeda",
+        "email": "sara-etx@outlook.com"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/saraelsa/msal-community-solid.git"
     },
+    "homepage": "https://github.com/saraelsa/msal-community-solid#readme",
+    "bugs": {
+        "url": "https://github.com/saraelsa/msal-community-solid/issues"
+    },
+    "files": [
+        "dist"
+    ],
     "private": "false",
     "type": "module",
     "main": "dist/index.cjs",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
+    "typesVersions": {},
     "exports": {
         "solid": {
             "development": "./dist/dev.jsx",
@@ -39,6 +51,7 @@
     },
     "license": "MIT",
     "devDependencies": {
+        "@azure/msal-browser": "^2.33.0",
         "@solidjs/testing-library": "^0.6.0",
         "@testing-library/jest-dom": "^5.16.5",
         "@types/testing-library__jest-dom": "^5.14.5",
@@ -46,20 +59,13 @@
         "esbuild-plugin-solid": "^0.5.0",
         "jsdom": "^21.1.0",
         "prettier": "^2.8.4",
+        "solid-js": "^1.6.11",
         "tsup": "^6.6.3",
         "tsup-preset-solid": "^0.1.8",
         "typescript": "^4.9.5",
         "vite": "^4.1.4",
         "vite-plugin-solid": "^2.5.0",
         "vitest": "^0.28.4"
-    },
-    "peerDependencies": {
-        "@azure/msal-browser": "^2.33.0",
-        "solid-js": "^1.6.10"
-    },
-    "dependencies": {
-        "@azure/msal-browser": "^2.33.0",
-        "solid-js": "^1.6.10"
     },
     "keywords": [
         "solid",
