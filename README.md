@@ -29,7 +29,7 @@ pnpm add msal-community-solid @azure/msal-browser
 Create a `PublicClientApplication` (see the docuemntation for msal-browser for more details on how to do that):
 
 ```ts
-import { Configuration, IPublicClientApplication, PublicClientApplication } from "@msal-browser";
+import { Configuration, IPublicClientApplication, PublicClientApplication } from "@azure/msal-browser";
 
 const msalConfig: Configuration = {
     auth: {
@@ -57,9 +57,11 @@ Set up the MSAL provider passing it the MSAL instance you created. All component
 import { MsalProvider } from "msal-community-solid";
 
 const MyApp: Component = () => {
-    <MsalProvider instance={msalInstance}>
-        <MyChild />
-    </MsalProvider>
+    return (
+        <MsalProvider instance={msalInstance}>
+            <MyChild />
+        </MsalProvider>
+    );
 };
 ```
 
