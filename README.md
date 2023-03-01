@@ -53,7 +53,7 @@ You will need to register your app using the Azure Portal (or with an alternate 
 
 Set up the MSAL provider passing it the MSAL instance you created. All components that need reactive access to authentication state should be descendants of the MSAL provider.
 
-```ts
+```tsx
 import { MsalProvider } from "msal-community-solid";
 
 const MyApp: Component = () => {
