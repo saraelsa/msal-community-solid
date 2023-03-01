@@ -1,9 +1,15 @@
-import { AccountInfo, InteractionStatus, IPublicClientApplication, Logger, stubbedPublicClientApplication } from "@azure/msal-browser";
+import {
+    AccountInfo,
+    InteractionStatus,
+    IPublicClientApplication,
+    Logger,
+    stubbedPublicClientApplication
+} from "@azure/msal-browser";
 import { createContext, useContext } from "solid-js";
 
 /**
  * The read-only context for MSAL.
- * 
+ *
  * @remarks
  * This can be used to reactively read the current state of MSAL.
  */
@@ -15,7 +21,7 @@ export interface IMsalReadContext {
 
 /**
  * The writeable context for MSAL.
- * 
+ *
  * @remarks
  * Reads from this context are not reactive.
  */
@@ -31,7 +37,7 @@ export type MsalContextType = [IMsalReadContext, IMsalWriteContext];
 
 /**
  * The stubbed context for the MSAL provider.
- * 
+ *
  * The read context is defaulted to blank, and the write context is defaulted to the stubbed MSAL client which will
  * throw an error on write operations.
  */
@@ -54,7 +60,7 @@ export const MsalContext = createContext<MsalContextType>(stubbedMsalContext);
 
 /**
  * Allows accessing the MSAL context.
- * 
+ *
  * @returns The MSAL context.
  */
 export const useMsal = (): MsalContextType => useContext(MsalContext);
