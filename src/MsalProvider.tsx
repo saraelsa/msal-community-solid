@@ -61,7 +61,7 @@ export const MsalProvider: Component<MsalProviderProps> = (props) => {
     });
 
     const reconcileReadContext = (interactionStatus: InteractionStatus) => {
-        console.warn(`MsalProvider - reconciling read context with interaction status ${interactionStatus}.`);
+        logger().verbose(`MsalProvider - reconciling read context with interaction status ${interactionStatus}.`);
 
         setReadContext(
             reconcile({
@@ -76,8 +76,6 @@ export const MsalProvider: Component<MsalProviderProps> = (props) => {
 
     const handleEvent = (eventMessage: EventMessage) => {
         logger().verbose(`MsalProvider - handling event ${eventMessage.eventType}.`);
-
-        console.warn(eventMessage);
 
         const interactionStatus =
             EventMessageUtils.getInteractionStatusFromEvent(eventMessage, readContext.inProgress) ??
