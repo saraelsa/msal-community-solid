@@ -26,7 +26,7 @@ pnpm add msal-community-solid @azure/msal-browser
 
 ### MSAL Instance Setup
 
-Create a `PublicClientApplication` (see the docuemntation for msal-browser for more details on how to do that):
+Create a `PublicClientApplication` (see the documentation for msal-browser for more details on how to do that):
 
 ```ts
 import { Configuration, IPublicClientApplication, PublicClientApplication } from "@azure/msal-browser";
