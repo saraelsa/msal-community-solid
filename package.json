@@ -25,15 +25,7 @@
     "typesVersions": {},
     "exports": {
         "solid": {
-            "development": "./dist/dev.jsx",
             "import": "./dist/index.jsx"
-        },
-        "development": {
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/dev.js"
-            },
-            "require": "./dist/dev.cjs"
         },
         "import": {
             "types": "./dist/index.d.ts",
