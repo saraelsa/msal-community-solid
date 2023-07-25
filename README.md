@@ -86,3 +86,61 @@ You can directly use the MSAL instance (available in the write context returned 
 ## Further Documentation
 
 The public API of this library includes documentation comments which can be referred to for more information.
+
+## An example component
+
+```tsx
+import {
+    createEffect,
+    createResource,
+    createMemo,
+} from 'solid-js'
+
+import { useMsal } from "msal-community-solid";
+import { SilentRequest } from '@azure/msal-browser';
+
+
+export function ExampleComponent() {
+    
+    const [readContext, writeContext] = useMsal()
+
+    createEffect(() => {
+        writeContext.instance.setActiveAccount(readContext.accounts[0])
+    })
+
+    const tokenRequestConfig = createMemo(() => ({
+        scopes: msalConfig.scopes,
+        redirectUri: msalConfig.auth.redirectUri,
+        authority: msalConfig.auth.authority,
+        account: readContext.activeAccount,
+        forceRefresh: false,
+        cacheLookupPolicy: 1,
+        prompt: "none"
+    } satisfies SilentRequest))
+
+
+    async function fetchJwtToken(silentRequest: SilentRequest) {
+        try {
+            return await writeContext.instance.acquireTokenSilent(silentRequest)
+
+        } catch (error) {
+
+            if (error instanceof InteractionRequiredAuthError) {
+                await writeContext.instance.acquireTokenRedirect(tokenRequestConfig)
+                return await writeContext.instance.acquireTokenSilent(tokenRequestConfig)
+            } else {
+                console.log(`an uncaught error occurred: ${error}`)
+            }
+        }
+    }
+
+    const [responseJwt] = createResource(
+        tokenRequestConfig,
+        fetchJwtToken
+    )
+
+    // return (
+    //     // Add your render code here
+    // )
+}
+```
