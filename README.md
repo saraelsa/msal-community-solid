@@ -128,6 +128,8 @@ export function ExampleComponent() {
             if (error instanceof InteractionRequiredAuthError) {
                 await writeContext.instance.acquireTokenRedirect(tokenRequestConfig)
                 return await writeContext.instance.acquireTokenSilent(tokenRequestConfig)
+            } else {
+                console.log(`an uncaught error occurred: ${error}`)
             }
         }
     }
