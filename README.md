@@ -99,10 +99,10 @@ import {
 import { useMsal } from "msal-community-solid";
 import { SilentRequest } from '@azure/msal-browser';
 
-const [readContext, writeContext] = useMsal()
-
 
 export function ExampleComponent() {
+    
+    const [readContext, writeContext] = useMsal()
 
     createEffect(() => {
         writeContext.instance.setActiveAccount(readContext.accounts[0])
@@ -116,22 +116,25 @@ export function ExampleComponent() {
         forceRefresh: false,
         cacheLookupPolicy: 1,
         prompt: "none"
-    } as SilentRequest))
+    } satisfies SilentRequest))
 
 
-    async function fetchAuth(silentRequest: SilentRequest) {
+    async function fetchJwtToken(silentRequest: SilentRequest) {
         try {
             return await writeContext.instance.acquireTokenSilent(silentRequest)
 
         } catch (error) {
-            const result = await writeContext.instance.acquireTokenRedirect(tokenRequestConfig)
-            return await writeContext.instance.acquireTokenSilent(tokenRequestConfig)
+
+            if (error instanceof InteractionRequiredAuthError) {
+                await writeContext.instance.acquireTokenRedirect(tokenRequestConfig)
+                return await writeContext.instance.acquireTokenSilent(tokenRequestConfig)
+            }
         }
     }
 
-    const [authResponse] = createResource(
+    const [responseJwt] = createResource(
         tokenRequestConfig,
-        fetchAuth
+        fetchJwtToken
     )
 
     // return (
